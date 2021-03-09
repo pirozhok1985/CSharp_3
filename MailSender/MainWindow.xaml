@@ -30,10 +30,15 @@
             </StackPanel>
         </StackPanel>
         <StackPanel Grid.Row="1" Orientation="Vertical" Margin="5">
-            <TextBox Name="tbBody"  Margin="5" VerticalAlignment="Stretch" Height="220" Text="{Binding MailSender.Body}"/>
+            <TextBox Name="tbBody"  Margin="5" VerticalAlignment="Stretch" Height="210" Text="{Binding MailSender.Body}"/>
             <StackPanel Margin="5" VerticalAlignment="Bottom" Orientation="Horizontal">
-                <Button Name="bSend" Margin="680,5,5,5"  Content="Send" Height="25" Click="BSend_OnClick"/>
-                <Button Name="bCancel" Content="Cancel" Height="25" Click="BCancel_OnClick"/>
+                <Button Name="bSend" Margin="660,5,5,5" Height="30" Click="BSend_OnClick">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Icons/icons8-sent-100.png" Width="10" Height="20"></Image>
+                        <Label Content="Send"></Label>
+                    </StackPanel>
+                </Button>
+                <Button Name="bCancel" Content="Cancel" Height="30" Click="BCancel_OnClick"/>
             </StackPanel>
         </StackPanel>
     </Grid>
