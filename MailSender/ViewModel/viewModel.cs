@@ -10,7 +10,7 @@ namespace MailSender.ViewModel
 {
     class viewModel
     {
-        public SmtpSender MailSender { get; set }
+        public SmtpSender MailSender { get; set; }
 
         public viewModel()
         {
