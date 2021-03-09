@@ -34,7 +34,7 @@
             <StackPanel Margin="5" VerticalAlignment="Bottom" Orientation="Horizontal">
                 <Button Name="bSend" Margin="660,5,5,5" Height="30" Click="BSend_OnClick">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="Icons/icons8-sent-100.png" Width="10" Height="20"></Image>
+                        <Image Source="Icons/icons8-sent-100.png" Width="10" Height="20"/>
                         <Label Content="Send"></Label>
                     </StackPanel>
                 </Button>
