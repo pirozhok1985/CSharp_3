@@ -47,5 +47,10 @@ namespace MailSender
         {
             this.Close();
         }
+
+        private void MenuItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
