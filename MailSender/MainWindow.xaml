@@ -54,7 +54,28 @@
                     </StackPanel>
                 </StackPanel>
             </TabItem>
-            <TabItem Header="Setting"></TabItem>
+            <TabItem Header="Setting">
+                <StackPanel Margin="5">
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <Label Content="Server Name:"/>
+                        <ComboBox x:Name="cbServer" Width="100" SelectionChanged="CbServer_OnSelectionChanged">
+                            <ComboBoxItem>smtp.gmail.com</ComboBoxItem>
+                            <ComboBoxItem>smtp.mail.ru</ComboBoxItem>
+                            <ComboBoxItem>smtp.yandex.ru</ComboBoxItem>
+                        </ComboBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <Label Content="User Name:"/>
+                        <TextBox x:Name="tbLogin" Width="400">
+                        </TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <Label Content="Password:"/>
+                        <TextBox x:Name="tbPassword" Width="400">
+                        </TextBox>
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>

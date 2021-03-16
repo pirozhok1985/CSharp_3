@@ -61,5 +61,21 @@ namespace MailSender
         {
             this.Close();
         }
+
+        private void CbServer_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox item = (ComboBox) sender;
+            var selectedItem = (ComboBoxItem)item.SelectedItem;
+            if (selectedItem.Content.ToString().Equals("smtp.gmail.com", StringComparison.OrdinalIgnoreCase))
+            {
+                this.tbLogin.IsEnabled = false;
+                this.tbPassword.IsEnabled = false;
+            }
+            else
+            {
+                this.tbLogin.IsEnabled = true;
+                this.tbPassword.IsEnabled = true;
+            }
+        }
     }
 }
