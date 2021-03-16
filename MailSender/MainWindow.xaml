@@ -74,6 +74,9 @@
                         <TextBox x:Name="tbPassword" Width="400">
                         </TextBox>
                     </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5,20,5,5">
+                        <Button x:Name="bApply" Content="Apply" Margin="5,0,0,0" Click="BApply_OnClick"/>
+                    </StackPanel>
                 </StackPanel>
             </TabItem>
         </TabControl>

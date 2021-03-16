@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
@@ -76,6 +77,24 @@ namespace MailSender
                 this.tbLogin.IsEnabled = true;
                 this.tbPassword.IsEnabled = true;
             }
+        }
+
+        private void BApply_OnClick(object sender, RoutedEventArgs e)
+        {
+            var cbSelectedItem = (ComboBoxItem)this.cbServer.SelectedItem;
+            var data = (viewModel)DataContext;
+            if (this.tbLogin.Text == string.Empty && this.tbPassword.Text == string.Empty)
+            {
+                if(this.tbLogin.IsEnabled)
+                    MessageBox.Show("You have to enter Credentials!", "Settings", MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
+            }
+            else
+            {
+                data.MailSender.Client.Credentials = new NetworkCredential(this.tbLogin.Text, this.tbPassword.Text);
+            }
+
+            data.MailSender.Client.Host = cbSelectedItem.Content.ToString();
         }
     }
 }
