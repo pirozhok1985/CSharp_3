@@ -77,6 +77,7 @@ namespace MailSender
                 this.tbLogin.IsEnabled = true;
                 this.tbPassword.IsEnabled = true;
             }
+            this.lStatus.Content = string.Empty;
         }
 
         private void BApply_OnClick(object sender, RoutedEventArgs e)
@@ -95,6 +96,7 @@ namespace MailSender
             }
 
             data.MailSender.Client.Host = cbSelectedItem.Content.ToString();
+            this.lStatus.Content = "Applied!";
         }
     }
 }

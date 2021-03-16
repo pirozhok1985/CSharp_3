@@ -77,6 +77,11 @@
                     <StackPanel Orientation="Horizontal" Margin="5,20,5,5">
                         <Button x:Name="bApply" Content="Apply" Margin="5,0,0,0" Click="BApply_OnClick"/>
                     </StackPanel>
+                    <StatusBar x:Name="Status" Margin="0,210,0,0" Height="35">
+                        <StatusBarItem>
+                            <Label x:Name="lStatus"/>
+                        </StatusBarItem>
+                    </StatusBar>
                 </StackPanel>
             </TabItem>
         </TabControl>
