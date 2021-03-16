@@ -6,17 +6,16 @@
         xmlns:vm="clr-namespace:MailSender.ViewModel"
         xmlns:local="clr-namespace:MailSender"
         mc:Ignorable="d"
-        Title="MainWindow" Height="520" Width="800">
+        Title="MainWindow" Height="520" Width="810">
     <Window.DataContext>
         <vm:viewModel/>
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="45*"/>
-            <RowDefinition Height="147*"/>
-            <RowDefinition Height="242*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="67*"/>
         </Grid.RowDefinitions>
-        <Menu Grid.Row="0">
+        <Menu Grid.Row="0" Margin="5,5,5,5">
             <MenuItem Header="File">
                 <MenuItem Header="Exit" Click="MenuItem_OnClick"/>
             </MenuItem>
@@ -24,31 +23,38 @@
                 <MenuItem Header="About me"/>
             </MenuItem>
         </Menu>
-        <StackPanel Grid.Row="1" Margin="5,5,5,5" Orientation="Vertical" Grid.RowSpan="2">
-            <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Left" >
-                <Label Name="lFrom" Margin="5" Content="From"/>
-                <TextBox Name="tbFrom" Margin="5" HorizontalContentAlignment="Left" Width="700" Text="{Binding MailSender.From}"/>
-            </StackPanel>
-            <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Left" >
-                <Label Name="lTo" Margin="5" Content="To"/>
-                <TextBox Name="tbTo" Margin="5" HorizontalContentAlignment="Left" Width="700" Text="{Binding MailSender.To}"/>
-            </StackPanel>
-            <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Left" >
-                <Label Name="lSubject" Margin ="5" Content="Subject"></Label>
-                <TextBox Name="tbSubject" Margin="5" HorizontalContentAlignment="Left" Width="700" Text="{Binding MailSender.Subject}"/>
-            </StackPanel>
-        </StackPanel>
-        <StackPanel Grid.Row="2" Orientation="Vertical" Margin="5,5,5,5">
-            <TextBox Name="tbBody"  Margin="5" VerticalAlignment="Stretch" Height="210" Text="{Binding MailSender.Body}"/>
-            <StackPanel Margin="5" VerticalAlignment="Bottom" Orientation="Horizontal">
-                <Button Name="bSend" Margin="660,5,5,5" Height="30" Click="BSend_OnClick">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="Icons/icons8-sent-100.png" Width="10" Height="20"/>
-                        <Label Content="Send"></Label>
+        <TabControl Grid.Row="1" Margin="5">
+            <TabItem Header="Send Mail">
+                <StackPanel Margin="5,0,-1,0" Height="420">
+                    <StackPanel Orientation="Vertical" Height="150" Width="790">
+                        <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Left" >
+                            <Label x:Name="lFrom" Margin="5" Content="From"/>
+                            <TextBox x:Name="tbFrom" Margin="5" HorizontalContentAlignment="Left" Width="700" Text="{Binding MailSender.From}"/>
+                        </StackPanel>
+                        <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Left" >
+                            <Label x:Name="lTo" Margin="5" Content="To"/>
+                            <TextBox x:Name="tbTo" Margin="5" HorizontalContentAlignment="Left" Width="700" Text="{Binding MailSender.To}"/>
+                        </StackPanel>
+                        <StackPanel Margin="5" Orientation="Horizontal" HorizontalAlignment="Left" >
+                            <Label x:Name="lSubject" Margin ="5" Content="Subject"/>
+                            <TextBox x:Name="tbSubject" Margin="5" HorizontalContentAlignment="Left" Width="700" Text="{Binding MailSender.Subject}"/>
+                        </StackPanel>
                     </StackPanel>
-                </Button>
-                <Button Name="bCancel" Content="Cancel" Height="30" Click="BCancel_OnClick"/>
-            </StackPanel>
-        </StackPanel>
+                    <StackPanel Orientation="Vertical" Height="260" Width="770">
+                        <TextBox x:Name="tbBody"  Margin="5" VerticalAlignment="Stretch" Height="200" Text="{Binding MailSender.Body}"/>
+                        <StackPanel Margin="5" VerticalAlignment="Bottom" Orientation="Horizontal">
+                            <Button x:Name="bSend" Margin="660,5,5,5" Height="30" Click="BSend_OnClick">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="Icons/icons8-sent-100.png" Width="10" Height="20"/>
+                                    <Label Content="Send"/>
+                                </StackPanel>
+                            </Button>
+                            <Button x:Name="bCancel" Content="Cancel" Height="30" Click="BCancel_OnClick"/>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Setting"></TabItem>
+        </TabControl>
     </Grid>
 </Window>
