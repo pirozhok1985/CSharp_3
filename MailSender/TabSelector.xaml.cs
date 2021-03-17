@@ -20,6 +20,18 @@ namespace MailSender
     /// </summary>
     public partial class TabSelector : UserControl
     {
+        public static readonly RoutedEvent NextClickEvent;
+        public static readonly RoutedEvent PrevClickEvent;
+        public static readonly DependencyProperty PrevTabProperty;
+        public static readonly DependencyProperty NextTabProperty;
+        static TabSelector()
+        {
+            NextClickEvent = EventManager.RegisterRoutedEvent("NextClick", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(TabSelector));
+            PrevClickEvent = EventManager.RegisterRoutedEvent("PrevClick", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(TabSelector));
+            PrevTabProperty = DependencyProperty.Register("PrevTab", typeof(string), typeof(TabSelector));
+            NextTabProperty = DependencyProperty.Register("NextTab", typeof(string), typeof(TabSelector));
+        }
+
         public TabSelector()
         {
             InitializeComponent();
@@ -31,21 +43,11 @@ namespace MailSender
             set { SetValue(PrevTabProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for PrevTab.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty PrevTabProperty =
-            DependencyProperty.Register("PrevTab", typeof(string), typeof(TabSelector));
-
         public string NextTab
         {
             get { return (string) GetValue(NextTabProperty); }
             set { SetValue(NextTabProperty, value);}
         }
-
-        public static readonly DependencyProperty NextTabProperty = 
-            DependencyProperty.Register("NextTab", typeof(string),typeof(TabSelector));
-
-        public static readonly RoutedEvent PrevClickEvent = EventManager.RegisterRoutedEvent("PrevClick",
-            RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(TabSelector));
 
         public event RoutedEventHandler PrevClick
         {
@@ -53,25 +55,20 @@ namespace MailSender
             remove { RemoveHandler(TabSelector.PrevClickEvent, value);}
         }
 
-        public static readonly RoutedEvent NextClickEvent = EventManager.RegisterRoutedEvent("NextClick",
-            RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(TabSelector));
-
         public event RoutedEventHandler NextClick
         {
-            add { AddHandler(TabSelector.NextClickEvent, value); }
-            remove { RemoveHandler(TabSelector.NextClickEvent, value); }
+            add { AddHandler(NextClickEvent, value); }
+            remove { RemoveHandler(NextClickEvent, value); }
         }
 
-        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+        private void BPrev_OnClick(object sender, RoutedEventArgs e)
         {
-            if ((Button) e.Source == bNext)
-            {
-                RaiseEvent(new RoutedEventArgs(TabSelector.NextClickEvent, this));
-            }
-            else if ((Button)e.Source == bPrev)
-            {
-                RaiseEvent(new RoutedEventArgs(TabSelector.PrevClickEvent, this));
-            }
+            RaiseEvent(new RoutedEventArgs(PrevClickEvent));
+        }
+
+        private void BNext_OnClick(object sender, RoutedEventArgs e)
+        {
+            RaiseEvent(new RoutedEventArgs(NextClickEvent));
         }
     }
 }

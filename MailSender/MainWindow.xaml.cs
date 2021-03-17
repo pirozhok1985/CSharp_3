@@ -98,5 +98,21 @@ namespace MailSender
             data.MailSender.Client.Host = cbSelectedItem.Content.ToString();
             this.lStatus.Content = "Applied!";
         }
+
+        private void TabSelector_OnPrevClick(object sender, RoutedEventArgs e)
+        {
+            e.Handled = true;
+            var t = this.tcMailTabs;
+            if (t.SelectedIndex == 0) t.SelectedIndex = 1;
+            else t.SelectedIndex -= 1;
+        }
+
+        private void TabSelector_OnNextClick(object sender, RoutedEventArgs e)
+        {
+            e.Handled = true;
+            var t = this.tcMailTabs;
+            if (t.SelectedIndex == 1) t.SelectedIndex = 0;
+            else t.SelectedIndex += 1;
+        }
     }
 }
