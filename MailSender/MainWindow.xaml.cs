@@ -58,11 +58,6 @@ namespace MailSender
             this.Close();
         }
 
-        private void MenuItem_OnClick(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
         private void CbServer_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBox item = (ComboBox) sender;
@@ -113,6 +108,17 @@ namespace MailSender
             var t = this.tcMailTabs;
             if (t.SelectedIndex == 1) t.SelectedIndex = 0;
             else t.SelectedIndex += 1;
+        }
+
+        private void MiExit_OnClick(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void MiAboutMe_OnClick(object sender, RoutedEventArgs e)
+        {
+            Window w = new AuthorInfo();
+            w.Show();
         }
     }
 }

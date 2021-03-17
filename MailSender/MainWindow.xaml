@@ -6,7 +6,7 @@
         xmlns:vm="clr-namespace:MailSender.ViewModel"
         xmlns:local="clr-namespace:MailSender"
         mc:Ignorable="d"
-        Title="MainWindow" Height="540" Width="810">
+        Title="MainWindow" Height="545" Width="810">
     <Window.DataContext>
         <vm:viewModel/>
     </Window.DataContext>
@@ -18,10 +18,10 @@
         </Grid.RowDefinitions>
         <Menu Grid.Row="0" Margin="5,5,5,5">
             <MenuItem Header="File">
-                <MenuItem Header="Exit" Click="MenuItem_OnClick"/>
+                <MenuItem Name="miExit" Header="Exit" Click="MiExit_OnClick"/>
             </MenuItem>
             <MenuItem Header="Help">
-                <MenuItem Header="About me"/>
+                <MenuItem Name="miAboutMe" Header="About me" Click="MiAboutMe_OnClick"/>
             </MenuItem>
         </Menu>
         <local:TabSelector Grid.Row="1" x:Name="tsMailTabsSwitch" NextTab="Forward" PrevTab="Back" PrevClick="TabSelector_OnPrevClick" NextClick="TabSelector_OnNextClick"/>

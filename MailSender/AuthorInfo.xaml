@@ -1,0 +1,33 @@
+﻿<Window x:Class="MailSender.AuthorInfo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MailSender"
+        mc:Ignorable="d"
+        Title="AuthorInfo" Height="380" Width="700">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Margin="3">
+           <Image Source="Icons/Me.jpg"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Margin="3">
+            <RichTextBox Height="170" Margin="3,100,3,3" IsEnabled="False">
+                <FlowDocument FontWeight="Black" FontSize="14">
+                    <Paragraph>
+                        Привет! Меня зовут Анисимов Евгений и мне 35 лет.
+                        Я работаю в компании СберБанк ведущим инженером в отделе
+                        пользовательских операционных систем. Linux направление.
+                    </Paragraph>
+                    <Paragraph>
+                        Год назад я решил стать разработчиком и последовательно иду к своей цели.
+                        Главное - верить в себя и не лениться!
+                    </Paragraph>
+                </FlowDocument>
+            </RichTextBox>
+        </StackPanel>
+    </Grid>
+</Window>
