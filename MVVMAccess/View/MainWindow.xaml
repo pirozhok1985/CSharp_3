@@ -14,7 +14,7 @@
         <TextBlock>Логин</TextBlock>
         <TextBox Name="tbLogin" Text="{Binding Path=Account.Login, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
         <TextBlock>Пароль</TextBlock>
-        <TextBox Name="tbPassword" Text="{Binding Path=Account.Password,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+        <TextBox Name="tbPassword" Text="{Binding Path=Account.Password,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay, ValidatesOnDataErrors=True}"/>
         <Button x:Name="btnAccess" Command="{Binding ClickAccess}">Ввести</Button>
         <Button x:Name="btnClearLogin" Command="{Binding ClickClearLogin}">Очистить логин/пароль</Button>
         <TextBlock x:Name="tbAccess" Text="{Binding Path=Access}" Height="auto" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
