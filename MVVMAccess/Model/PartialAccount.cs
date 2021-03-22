@@ -4,11 +4,13 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace MVVMAccess.Model
 {
     public partial class Account : IDataErrorInfo
     {
+        
         public string this[string columnName]
         {
             get
@@ -21,11 +23,12 @@ namespace MVVMAccess.Model
 
         private string CheckPasswordReq()
         {
-            if (string.Equals(Password, "password", StringComparison.OrdinalIgnoreCase))
+            string pattern = @"^[a-z]\w{7,12}$";
+            if (Regex.Match(Password,pattern,RegexOptions.IgnoreCase).Value != string.Empty || string.Equals(password,"None",StringComparison.Ordinal))
             {
-                return "Gotcha!";
+                return string.Empty;
             }
-            return string.Empty;
+            return $"{Password} didn`t match security requirements!";
         }
 
         public string Error { get; set; }
