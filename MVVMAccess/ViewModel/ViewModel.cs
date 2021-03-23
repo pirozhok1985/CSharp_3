@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
 using MVVMAccess.Model;
 using MVVMAccess.ViewModel;
+using System.Text.RegularExpressions;
 
 namespace MVVMAccess.ViewModel
 {
@@ -73,6 +76,17 @@ namespace MVVMAccess.ViewModel
             Account.Password = string.Empty;
             Account.Login = string.Empty;
             AccessToApp.Attempt = 0;
+        }
+    }
+    public class LoginValidation : ValidationRule
+    {
+        public override ValidationResult Validate(object value, CultureInfo cultureInfo)
+        {
+            string pattern = @"(^\w{2,15}\.\w{1,2}$)";
+            if (Regex.IsMatch(value.ToString(), pattern))
+                return new ValidationResult(true, null);
+            else
+                return new ValidationResult(false, "Login must meet security requirements!");
         }
     }
 }
