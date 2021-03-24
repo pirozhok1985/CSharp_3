@@ -13,6 +13,7 @@ namespace MVVMAccess.Model
     {
         private string login = "None";
         private string password = "None";
+        
 
         public string Login
         {
@@ -45,6 +46,8 @@ namespace MVVMAccess.Model
         {
             this.login = login;
             this.password = password;
+            DateTime time = new DateTime(;
+            time.AddSeconds(-1);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
