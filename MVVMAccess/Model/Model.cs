@@ -8,11 +8,12 @@ using System.Threading.Tasks;
 namespace MVVMAccess.Model
 {
     //Класс для логина и пароля
-    public class Account : INotifyPropertyChanged
+    public partial class Account : INotifyPropertyChanged
     //Нередко модель реализует интерфейсы INotifyPropertyChanged или INotifyCollectionChanged,которые позволяют уведомлять систему об изменениях свойств модели.
     {
         private string login = "None";
         private string password = "None";
+        
 
         public string Login
         {
@@ -45,6 +46,8 @@ namespace MVVMAccess.Model
         {
             this.login = login;
             this.password = password;
+            DateTime time = new DateTime(;
+            time.AddSeconds(-1);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
