@@ -29,12 +29,23 @@ namespace AsyncFactorialAndSum
             Console.Write("Введите второе слогаемое: ");
             if (!int.TryParse(Console.ReadLine(), out int b))
                 throw new InvalidCastException("Could not cast entered value to int");
+            int[] arr = { a, b };
 
 
             IAsyncResult resF = fd.BeginInvoke(x, new AsyncCallback(FinishFactorial), x);
-            IAsyncResult resS = ns.BeginInvoke(a, b, null, null);
-            Console.WriteLine($"Сумма 2-х чисел равна: {ns.EndInvoke(resS)}");
+            IAsyncResult resS = ns.BeginInvoke(a, b, new AsyncCallback(FinishSum), arr);
             Console.ReadLine();
+        }
+
+        private static void FinishSum(IAsyncResult ar)
+        {
+            //--------------------------------------------------------------------------------------------------------------------
+            Console.WriteLine($"FinishFactorial method is running in the thread number {Thread.CurrentThread.ManagedThreadId}");
+            //--------------------------------------------------------------------------------------------------------------------
+            AsyncResult res = (AsyncResult)ar;
+            NumbersSum deleg = (NumbersSum)res.AsyncDelegate;
+            int[] nums = (int[])ar.AsyncState;
+            Console.WriteLine($"Сумма 2-х чисел {nums[0]} и {nums[1]} равна: {deleg.EndInvoke(ar)}");
         }
 
         private static void FinishFactorial(IAsyncResult ar)
