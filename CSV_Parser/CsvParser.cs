@@ -7,34 +7,34 @@ using System.IO;
 
 namespace CSV_Parser
 {
-   static class CsvParser
+   class CsvParser
     {
-        private static Dictionary<string, List<string>> parcedString = new Dictionary<string, List<string>>();
-        public static char Delimeter { get; set; }
-        public static void SaveContent(string filename)
-        { 
+        private List<string> parcedString;
+        public char Delimeter { get; set; }
+
+        public CsvParser()
+        {
+            parcedString = new List<string>();
+            Delimeter = ';';
         }
-        public static void LoadContent(string filename)
+        public void SaveContent(string filename)
+        {
+            using (StreamWriter csvWriter = new StreamWriter(filename)) 
+            {
+                foreach (var item in parcedString)
+                {
+                    csvWriter.WriteLine(item);
+                }           
+            }
+        }
+        public void LoadContent(string filename)
         {
             using (StreamReader csvReader = new StreamReader(filename))
             {
-                string[] csvHeader = csvReader.ReadLine().Split(Delimeter);
                 string csvString = string.Empty;
                 while (!csvReader.EndOfStream)
                 {
-                    csvString = csvReader.ReadLine();
-                    for (var i = 0; i < csvHeader.Length; i++) 
-                    {
-                        if (parcedString.ContainsKey(csvHeader[i])) 
-                        {
-                            parcedString[csvHeader[i]].Add(csvString.Split(Delimeter)[i]);
-                        }
-                        else
-                        {
-                            parcedString.Add(csvHeader[i], new List<string>());
-                            parcedString[csvHeader[i]].Add(csvString.Split(Delimeter)[i]);
-                        }
-                    }
+                    parcedString.Add(csvReader.ReadLine().Replace(Delimeter,'\t'));
                 }
             }
         }
