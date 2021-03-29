@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestingCeasarCypher", "Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncFactorialAndSum", "AsyncFactorialAndSum\AsyncFactorialAndSum.csproj", "{D0963C74-E88B-4B14-A6D4-68D38AB29B5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSV_Parser", "CSV_Parser\CSV_Parser.csproj", "{1EA69C02-8B48-46E8-BCFF-9A4E0F93723D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSV_Parser", "CSV_Parser\CSV_Parser.csproj", "{1EA69C02-8B48-46E8-BCFF-9A4E0F93723D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TPL_Matrix", "TPL_Matrix\TPL_Matrix.csproj", "{D111B64B-ECEA-41D9-A5F2-CFA462CB951F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{1EA69C02-8B48-46E8-BCFF-9A4E0F93723D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EA69C02-8B48-46E8-BCFF-9A4E0F93723D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1EA69C02-8B48-46E8-BCFF-9A4E0F93723D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D111B64B-ECEA-41D9-A5F2-CFA462CB951F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D111B64B-ECEA-41D9-A5F2-CFA462CB951F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D111B64B-ECEA-41D9-A5F2-CFA462CB951F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D111B64B-ECEA-41D9-A5F2-CFA462CB951F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
