@@ -17,8 +17,10 @@ namespace CSV_Parser
             parcedString = new List<string>();
             Delimeter = ';';
         }
-        public void SaveContent(string filename)
+        public void SaveContent(object filenameObj)
         {
+            var filename = filenameObj as string;
+            if (filename == null) throw new NullReferenceException();
             using (StreamWriter csvWriter = new StreamWriter(filename)) 
             {
                 foreach (var item in parcedString)
@@ -27,8 +29,10 @@ namespace CSV_Parser
                 }           
             }
         }
-        public void LoadContent(string filename)
+        public void LoadContent(object filenameObj)
         {
+            var filename = filenameObj as string;
+            if (filename == null) throw new NullReferenceException();
             using (StreamReader csvReader = new StreamReader(filename))
             {
                 string csvString = string.Empty;
@@ -37,6 +41,7 @@ namespace CSV_Parser
                     parcedString.Add(csvReader.ReadLine().Replace(Delimeter,'\t'));
                 }
             }
+            Program.wait.Set();
         }
     }
 }
